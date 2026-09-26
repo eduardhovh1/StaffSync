@@ -1,2 +1,27 @@
 backend/venv
 .pytest_cache
+
+# FRONTEND
+frontend/staffsync-frontend/logs
+frontend/staffsync-frontend/*.log
+frontend/staffsync-frontend/npm-debug.log*
+frontend/staffsync-frontend/yarn-debug.log*
+frontend/staffsync-frontend/yarn-error.log*
+frontend/staffsync-frontend/pnpm-debug.log*
+frontend/staffsync-frontend/lerna-debug.log*
+
+frontend/staffsync-frontend/node_modules
+frontend/staffsync-frontend/dist
+frontend/staffsync-frontend/dist-ssr
+frontend/staffsync-frontend/*.local
+
+# Editor directories and files
+frontend/staffsync-frontend/.vscode/*
+frontend/staffsync-frontend/!.vscode/extensions.json
+frontend/staffsync-frontend/.idea
+frontend/staffsync-frontend/.DS_Store
+frontend/staffsync-frontend/*.suo
+frontend/staffsync-frontend/*.ntvs*
+frontend/staffsync-frontend/*.njsproj
+frontend/staffsync-frontend/*.sln
+frontend/staffsync-frontend/*.sw?
