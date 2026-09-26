@@ -1,1 +1,2 @@
 backend/venv
+.pytest_cache
