@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 
-from src.routes import departamentos, trabajadores
+from src.routes import departments, employees
 
 app = FastAPI(title="StaffSync HRMS", version="0.1.0")
 
-app.include_router(departamentos.router)
-app.include_router(trabajadores.router)
+app.include_router(departments.router)
+app.include_router(employees.router)
 
 
 @app.get("/", tags=["health"])
