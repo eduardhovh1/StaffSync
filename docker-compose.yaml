@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: staffsync
+      MYSQL_USER: api_user
+      MYSQL_PASSWORD: api_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      # Magia: Mapeamos el script para que MySQL lo ejecute al arrancar por primera vez
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql 
+
+  backend:
+    build: 
+      context: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=db
+      - DB_USER=api_user
+      - DB_PASSWORD=api_password
+      - DB_NAME=staffsync
+      - DB_PORT=3306
+    depends_on:
+      - db
+    volumes:
+      - ./backend:/app # Hot-reload para FastAPI
+
+  frontend:
+    build: 
+      context: ./frontend
+    ports:
+      - "5173:5173" # Puerto por defecto de Vite
+    environment:
+      - VITE_API_URL=http://localhost:8000 # Vite usa el prefijo VITE_ para exponer variables
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules # Evita que tu carpeta local sobreescriba los módulos del contenedor
+
+volumes:
+  mysql_data:
