@@ -1,0 +1,1041 @@
+/* ============================================================
+   StaffSync — Global stylesheet
+   NBA inspired / Dark theme / Fully responsive
+   ============================================================ */
+
+:root {
+  --nba-black: #000000;
+  --nba-dark: #121212;
+  --nba-surface: #1d1d1d;
+  --nba-card: #242424;
+  --nba-border: #333333;
+
+  --nba-red: #c8102e;
+  --nba-red-dark: #9c0c24;
+
+  --nba-blue: #1d428a;
+  --nba-blue-light: #2f5fc0;
+
+  --nba-white: #ffffff;
+  --nba-gray: #a9a9a9;
+  --nba-muted: #6e6e6e;
+
+  --font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-condensed: "Arial Narrow", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --content-width: 1200px;
+  --page-padding: clamp(16px, 4vw, 32px);
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: var(--font-main);
+  background-color: var(--nba-black);
+  color: var(--nba-white);
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* ============================================================
+   ROOT
+   ============================================================ */
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--nba-black);
+}
+
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+.nba-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  background-color: rgba(0, 0, 0, 0.96);
+  border-bottom: 3px solid var(--nba-red);
+
+  width: 100%;
+}
+
+.nba-nav-inner {
+  width: min(100%, var(--content-width));
+  min-height: 64px;
+
+  margin: 0 auto;
+  padding: 0 var(--page-padding);
+
+  display: flex;
+  align-items: center;
+
+  gap: clamp(20px, 4vw, 40px);
+}
+
+
+/* Brand */
+
+.nba-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  text-decoration: none;
+  color: var(--nba-white);
+
+  font-family: var(--font-condensed);
+  font-weight: 800;
+  font-size: clamp(18px, 2vw, 22px);
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  flex-shrink: 0;
+}
+
+.nba-brand-mark {
+  width: 14px;
+  height: 28px;
+
+  background: linear-gradient(
+    to bottom,
+    var(--nba-red) 0%,
+    var(--nba-red) 50%,
+    var(--nba-blue) 50%,
+    var(--nba-blue) 100%
+  );
+
+  transform: skewX(-12deg);
+  flex-shrink: 0;
+}
+
+.nba-brand span.accent {
+  color: var(--nba-red);
+}
+
+
+/* Menu */
+
+.nba-menu {
+  display: flex;
+  align-items: center;
+
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+
+  gap: 4px;
+
+  min-width: 0;
+}
+
+.nba-menu a {
+  display: block;
+
+  padding: 10px clamp(10px, 1.5vw, 18px);
+
+  color: var(--nba-white);
+  text-decoration: none;
+
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+
+  border-bottom: 3px solid transparent;
+
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.nba-menu a:hover {
+  color: var(--nba-gray);
+}
+
+.nba-menu a.active {
+  color: var(--nba-white);
+  border-bottom-color: var(--nba-red);
+}
+
+
+/* Hamburger toggle (mobile only) */
+
+.nba-nav-toggle {
+  display: none;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 5px;
+
+  width: 44px;
+  height: 44px;
+
+  margin-left: auto;
+  padding: 0;
+
+  background: transparent;
+
+  border: 1px solid transparent;
+
+  cursor: pointer;
+}
+
+.nba-nav-toggle span {
+  display: block;
+
+  width: 24px;
+  height: 3px;
+
+  background-color: var(--nba-white);
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.nba-nav-toggle:hover span {
+  background-color: var(--nba-gray);
+}
+
+.nba-nav-toggle.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.nba-nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nba-nav-toggle.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* Call-to-action buttons */
+
+.nba-actions {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-top: 24px;
+}
+
+.nba-btn {
+  display: inline-block;
+
+  padding: 12px 28px;
+
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  color: var(--nba-white);
+  background-color: var(--nba-red);
+
+  border: 1px solid var(--nba-red);
+
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.nba-btn:hover {
+  background-color: var(--nba-red-dark);
+  border-color: var(--nba-red-dark);
+}
+
+.nba-btn-secondary {
+  background-color: transparent;
+
+  border-color: var(--nba-border);
+}
+
+.nba-btn-secondary:hover {
+  background-color: var(--nba-surface);
+  border-color: var(--nba-gray);
+}
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.nba-hero {
+  background:
+    linear-gradient(
+      120deg,
+      var(--nba-dark) 60%,
+      var(--nba-blue) 160%
+    );
+
+  border-bottom: 1px solid var(--nba-border);
+}
+
+.nba-hero-inner {
+  width: min(100%, var(--content-width));
+
+  margin: 0 auto;
+
+  padding:
+    clamp(32px, 6vw, 56px)
+    var(--page-padding)
+    clamp(28px, 5vw, 44px);
+}
+
+
+/* Kicker */
+
+.nba-kicker {
+  display: inline-block;
+
+  font-family: var(--font-condensed);
+  font-size: clamp(11px, 1.2vw, 13px);
+  font-weight: 700;
+
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  color: var(--nba-white);
+  background-color: var(--nba-red);
+
+  padding: 4px 12px;
+  margin-bottom: 16px;
+
+  transform: skewX(-12deg);
+}
+
+
+/* Main title */
+
+.nba-title {
+  margin: 0;
+
+  font-family: var(--font-condensed);
+
+  /*
+    Se adapta automáticamente:
+    móvil → pequeño
+    tablet → medio
+    desktop → grande
+  */
+  font-size: clamp(36px, 6vw, 64px);
+
+  font-weight: 800;
+  line-height: 0.98;
+
+  letter-spacing: clamp(0.5px, 0.15vw, 1.5px);
+
+  text-transform: uppercase;
+
+  max-width: 100%;
+}
+
+.nba-title::after {
+  content: "";
+
+  display: block;
+
+  width: clamp(50px, 7vw, 72px);
+  height: 5px;
+
+  background-color: var(--nba-red);
+
+  margin-top: 16px;
+}
+
+.nba-subtitle {
+  margin: 16px 0 0;
+
+  color: var(--nba-gray);
+
+  font-size: clamp(14px, 1.5vw, 16px);
+
+  line-height: 1.5;
+
+  max-width: 700px;
+}
+
+
+/* ============================================================
+   MAIN CONTAINER
+   ============================================================ */
+
+.nba-container {
+  width: min(100%, var(--content-width));
+
+  margin: 0 auto;
+
+  padding:
+    clamp(24px, 4vw, 40px)
+    var(--page-padding)
+    clamp(48px, 6vw, 72px);
+
+  flex: 1;
+}
+
+
+/* ============================================================
+   SECTION HEADER
+   ============================================================ */
+
+.nba-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  border-bottom: 2px solid var(--nba-border);
+
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+}
+
+.nba-section-head h2 {
+  margin: 0;
+
+  font-family: var(--font-condensed);
+
+  font-size: clamp(19px, 2.5vw, 24px);
+
+  font-weight: 800;
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+}
+
+.nba-count {
+  font-family: var(--font-condensed);
+
+  font-size: 14px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color: var(--nba-gray);
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   DEPARTMENT GRID
+   ============================================================ */
+
+.nba-grid {
+  display: grid;
+
+  /*
+    Se adapta automáticamente al espacio disponible.
+  */
+  grid-template-columns:
+    repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+
+  gap: clamp(14px, 2vw, 20px);
+}
+
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+
+.nba-card {
+  min-width: 0;
+
+  background-color: var(--nba-surface);
+
+  border: 1px solid var(--nba-border);
+  border-top: 4px solid var(--nba-blue);
+
+  padding: clamp(18px, 2.5vw, 24px);
+
+  text-decoration: none;
+  color: var(--nba-white);
+
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.nba-card:nth-child(odd) {
+  border-top-color: var(--nba-red);
+}
+
+.nba-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--nba-red);
+  background-color: var(--nba-card);
+}
+
+.nba-card-id {
+  font-family: var(--font-condensed);
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color: var(--nba-muted);
+
+  text-transform: uppercase;
+}
+
+.nba-card-name {
+  margin: 8px 0 0;
+
+  font-family: var(--font-condensed);
+
+  /*
+    Evita títulos gigantes en pantallas pequeñas.
+  */
+  font-size: clamp(21px, 3vw, 28px);
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  line-height: 1.1;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+
+.nba-table-wrap {
+  width: 100%;
+
+  overflow-x: auto;
+
+  border: 1px solid var(--nba-border);
+
+  /*
+    Permite hacer scroll horizontal sin mover
+    toda la página.
+  */
+  -webkit-overflow-scrolling: touch;
+}
+
+.nba-table {
+  width: 100%;
+
+  min-width: 650px;
+
+  border-collapse: collapse;
+
+  background-color: var(--nba-surface);
+
+  font-size: 15px;
+}
+
+.nba-table thead th {
+  font-family: var(--font-condensed);
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+  text-align: left;
+
+  color: var(--nba-gray);
+
+  padding: 14px 16px;
+
+  border-bottom: 3px solid var(--nba-red);
+
+  background-color: var(--nba-dark);
+
+  white-space: nowrap;
+}
+
+.nba-table tbody td {
+  padding: 14px 16px;
+
+  border-bottom: 1px solid var(--nba-border);
+
+  white-space: nowrap;
+}
+
+.nba-table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.nba-table tbody tr:hover {
+  background-color: var(--nba-card);
+}
+
+.nba-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.nba-player {
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  font-family: var(--font-condensed);
+
+  letter-spacing: 0.5px;
+}
+
+
+/* ============================================================
+   BADGES
+   ============================================================ */
+
+.nba-badge {
+  display: inline-block;
+
+  font-family: var(--font-condensed);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+
+  background-color: var(--nba-blue);
+  color: var(--nba-white);
+
+  padding: 4px 10px;
+
+  transform: skewX(-12deg);
+
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   STATES
+   ============================================================ */
+
+.nba-loading,
+.nba-error,
+.nba-empty {
+  padding: clamp(32px, 6vw, 48px) 24px;
+
+  text-align: center;
+
+  font-family: var(--font-condensed);
+
+  font-size: clamp(15px, 2vw, 18px);
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  background-color: var(--nba-surface);
+
+  border: 1px solid var(--nba-border);
+}
+
+.nba-loading {
+  color: var(--nba-gray);
+}
+
+.nba-error {
+  color: var(--nba-white);
+
+  border-left: 5px solid var(--nba-red);
+}
+
+.nba-empty {
+  color: var(--nba-muted);
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.nba-footer {
+  background-color: var(--nba-black);
+
+  border-top: 3px solid var(--nba-blue);
+
+  padding: 24px var(--page-padding);
+
+  text-align: center;
+
+  font-family: var(--font-condensed);
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  color: var(--nba-muted);
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  .nba-nav-inner {
+    gap: 20px;
+  }
+
+  .nba-menu {
+    overflow-x: auto;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nba-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nba-menu a {
+    white-space: nowrap;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+  /* ---------- Navigation ---------- */
+
+  .nba-nav-inner {
+    min-height: 58px;
+
+    padding-left: 16px;
+    padding-right: 16px;
+
+    gap: 16px;
+
+    justify-content: space-between;
+  }
+
+  .nba-brand {
+    font-size: 17px;
+    letter-spacing: 1.5px;
+  }
+
+  .nba-brand-mark {
+    width: 11px;
+    height: 24px;
+  }
+
+  /*
+    Hamburger menu: the inline row becomes
+    a dropdown panel below the header.
+  */
+  .nba-nav-toggle {
+    display: flex;
+  }
+
+  .nba-menu {
+    display: none;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 0;
+
+    background-color: rgba(0, 0, 0, 0.98);
+
+    border-bottom: 3px solid var(--nba-red);
+
+    padding: 8px 0;
+  }
+
+  .nba-menu.open {
+    display: flex;
+  }
+
+  .nba-menu a {
+    padding: 14px 24px;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+
+    border-bottom: 1px solid var(--nba-border);
+  }
+
+  .nba-menu li:last-child a {
+    border-bottom: none;
+  }
+
+  .nba-menu a.active {
+    border-bottom: 1px solid var(--nba-border);
+    border-left: 4px solid var(--nba-red);
+  }
+
+
+  /* ---------- Hero ---------- */
+
+  .nba-hero-inner {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .nba-kicker {
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    padding: 4px 9px;
+
+    margin-bottom: 13px;
+  }
+
+  .nba-title {
+    font-size: clamp(32px, 11vw, 46px);
+
+    line-height: 1;
+  }
+
+  .nba-title::after {
+    height: 4px;
+
+    margin-top: 13px;
+  }
+
+  .nba-subtitle {
+    margin-top: 13px;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+  }
+
+
+  /* ---------- Main ---------- */
+
+  .nba-container {
+    padding-top: 22px;
+    padding-bottom: 40px;
+  }
+
+
+  /* ---------- Section ---------- */
+
+  .nba-section-head {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-bottom: 18px;
+  }
+
+  .nba-section-head h2 {
+    font-size: 20px;
+  }
+
+  .nba-count {
+    font-size: 11px;
+
+    letter-spacing: 1.5px;
+  }
+
+
+  /* ---------- Cards ---------- */
+
+  .nba-grid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .nba-card {
+    padding: 18px;
+  }
+
+  .nba-card-name {
+    font-size: 24px;
+  }
+
+
+  /* ---------- Table ---------- */
+
+  .nba-table-wrap {
+    /*
+      El usuario puede deslizar horizontalmente
+      únicamente la tabla.
+    */
+    margin-left: 0;
+    margin-right: 0;
+
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .nba-table {
+    min-width: 600px;
+
+    font-size: 14px;
+  }
+
+  .nba-table thead th,
+  .nba-table tbody td {
+    padding: 12px;
+  }
+
+
+  /* ---------- States ---------- */
+
+  .nba-loading,
+  .nba-error,
+  .nba-empty {
+    padding: 36px 16px;
+
+    font-size: 14px;
+
+    letter-spacing: 1.5px;
+  }
+
+
+  /* ---------- Footer ---------- */
+
+  .nba-footer {
+    padding: 20px 16px;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+  }
+}
+
+
+/* ============================================================
+   VERY SMALL PHONES
+   ============================================================ */
+
+@media (max-width: 380px) {
+
+  .nba-nav-inner {
+    gap: 10px;
+  }
+
+  .nba-brand {
+    font-size: 15px;
+  }
+
+  .nba-brand-mark {
+    width: 9px;
+    height: 21px;
+  }
+
+  .nba-menu a {
+    padding: 14px 20px;
+  }
+
+  .nba-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nba-btn {
+    text-align: center;
+  }
+
+  .nba-title {
+    font-size: 31px;
+  }
+
+  .nba-card-name {
+    font-size: 21px;
+  }
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
