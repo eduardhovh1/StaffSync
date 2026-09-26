@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
-
+const URL_EMPLOYEES = import.meta.env.VITE_API_URL_EMPLOYEES
+const URL_DEPARTMENTS= import.meta.env.VITE_API_URL_DEPARTMENTS
 function Employees() {
   const [employees, setEmployees] = useState([])
   const [departments, setDepartments] = useState({})
@@ -10,11 +10,11 @@ function Employees() {
 
   useEffect(() => {
     Promise.all([
-      fetch(`${API_URL}/api/employees/`).then((res) => {
+      fetch(`${URL_EMPLOYEES}`).then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
         return res.json()
       }),
-      fetch(`${API_URL}/api/departments/`).then((res) => {
+      fetch(`${URL_DEPARTMENTS}`).then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
         return res.json()
       }),

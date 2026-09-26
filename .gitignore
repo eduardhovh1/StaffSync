@@ -1,6 +1,6 @@
 backend/venv
 .pytest_cache
-
+front.sh
 # FRONTEND
 frontend/staffsync-frontend/logs
 frontend/staffsync-frontend/*.log
