@@ -8,7 +8,7 @@ function Home() {
           <span className="nba-kicker">HRMS</span>
           <h1 className="nba-title">Welcome to StaffSync</h1>
           <p className="nba-subtitle">
-            Your whole organization at a glance — teams, roster and signing
+            Your whole organizations at a glance — teams, roster and signing
             dates, all in one place.
           </p>
           <div className="nba-actions">
