@@ -30,6 +30,19 @@ services:
       - db
     volumes:
       - ./backend:/app 
+  frontend:
+    build:
+      context: ./frontend/staffsync-frontend
+    container_name: staffsync_frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend/staffsync-frontend:/app
+      - /app/node_modules
 
 volumes:
   mysql_data:

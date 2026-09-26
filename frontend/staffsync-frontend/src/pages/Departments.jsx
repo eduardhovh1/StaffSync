@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
+const URL_DEPARTMENTS = import.meta.env.VITE_API_URL_DEPARTMENTS
 
 function Departments() {
   const [departments, setDepartments] = useState([])
@@ -8,7 +8,7 @@ function Departments() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch(`${API_URL}/api/departments/`)
+    fetch(`${URL_DEPARTMENTS}`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
         return res.json()
