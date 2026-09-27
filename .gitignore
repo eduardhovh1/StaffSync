@@ -1,4 +1,10 @@
 backend/venv
+backend/src/__pycache__
+backend/src/config/__pycache__
+backend/src/models/__pycache__
+backend/src/routes/__pycache__
+backend/src/schemas/__pycache__
+backend/tests/__pycache__
 .pytest_cache
 front.sh
 # FRONTEND
@@ -14,6 +20,8 @@ frontend/staffsync-frontend/node_modules
 frontend/staffsync-frontend/dist
 frontend/staffsync-frontend/dist-ssr
 frontend/staffsync-frontend/*.local
+frontend/staffsync-frontend/.env.development
+frontend/staffsync-frontend/.env.production
 
 # Editor directories and files
 frontend/staffsync-frontend/.vscode/*
